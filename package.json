@@ -1,6 +1,6 @@
 {
   "name": "pipong.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ping Pong bracket and roster scoring system. Server component.",
   "main": "server/server.js",
   "repository": {
