@@ -1,0 +1,80 @@
+{
+  "name": "pipong.io",
+  "version": "1.0.0",
+  "description": "Ping Pong bracket and roster scoring system. Server component.",
+  "main": "server/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlienCreations/pipong.io.git"
+  },
+  "dependencies": {
+    "alien-node-api-utils": "^0.0.x",
+    "alien-node-mysql-utils": "^0.0.x",
+    "alien-node-q-utils": "^0.0.x",
+    "alien-node-redis-utils": "^1.x.x",
+    "alien-node-winston-utils": "^0.0.x",
+    "bcrypt": "^0.8.2",
+    "bower": "^1.4.1",
+    "config": "^1.8.1",
+    "del": "^1.1.1",
+    "execsql": "0.0.3",
+    "express": "~4.9.0",
+    "express-session": "^1.9.3",
+    "express-validator": "^2.9.0",
+    "jade": "^1.11.x",
+    "moment": "^2.10.3",
+    "mysql": "^2.7.0",
+    "o-validator": "^1.x.x",
+    "passport": "*",
+    "passport-facebook": "*",
+    "passport-google": "*",
+    "passport-local": "*",
+    "passport-oauth": "*",
+    "passport-openid": "*",
+    "passport-twitter": "*",
+    "prettycats": "*",
+    "q": "*",
+    "ramda": "^0.17.x",
+    "redis": "^0.12.1",
+    "serve-favicon": "~2.1.3",
+    "vinyl-paths": "^1.0.0",
+    "winston": "*",
+    "ws": "^0.8.x",
+    "yargs": "*"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.13",
+    "jasmine": "^2.3.1",
+    "jshint-stylish": "^0.2.0",
+    "gulp": "^3.8.11",
+    "gulp-concat": "*",
+    "gulp-if": "*",
+    "gulp-ignore": "*",
+    "gulp-less": "*",
+    "gulp-live-server": "0.0.14",
+    "gulp-ng-html2js": "*",
+    "gulp-nodemon": "*",
+    "gulp-shell": "*",
+    "gulp-uglify": "*"
+  },
+  "scripts": {
+    "test": "export NODE_ENV=test && ./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine"
+  },
+  "keywords": [
+    "pipong",
+    "ping",
+    "pong",
+    "raspberry",
+    "pi",
+    "alien",
+    "creations",
+    "seancannon"
+  ],
+  "author": "Sean Cannon (alienwebguy@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlienCreations/pipong.io/issues"
+  },
+  "homepage": "https://github.com/AlienCreations/pipong.io#readme"
+}

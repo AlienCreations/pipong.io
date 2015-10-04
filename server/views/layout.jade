@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    base(href="/")
+    meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no")
+    title= title
+    link(rel="stylesheet", href="/assets/css/vendor.css")
+    link(rel="stylesheet", href="/assets/css/index.css")
+    script(type="text/javascript", src="/assets/js/vendor.js")
+    script(type="text/javascript", src="/assets/js/main.js")
+  body(ng-app="pipong", id="ng-app", ng-controller="RootCtrl as rootCtrl")
+    audio-loop(src="/assets/audio/theme.wav")
+    div(ng-view)
