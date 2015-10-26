@@ -19,6 +19,10 @@ module.exports = {
     enabledPorts : [3000]
   },
 
+  session : {
+    secret : 'dev'
+  },
+
   logging : {
     winston : {
       transports : [
@@ -76,7 +80,13 @@ module.exports = {
   auth : {
     strategies : {
       facebook : {
-        callbackUrl : 'https://www.pipong.io/auth/facebook/callback'
+
+        // PiPongTest app
+        clientId     : '184150245254542',
+        clientSecret : '916297ebc1f56bc636383903689148c5',
+
+        // Resolves to an IP that port-forwards to localhost:3000
+        callbackUrl  : 'http://localhost:3000/auth/facebook/callback'
       }
     }
   }

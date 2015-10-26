@@ -1,11 +1,15 @@
 'use strict';
 
-var express  = require('express'),
-    passport = require('passport'),
-    router   = express.Router();
+var R           = require('ramda'),
+    express     = require('express'),
+    passport    = require('passport'),
+    router      = express.Router(),
+    redis       = require('redis'),
+    redisClient = redis.createClient(),
+    cacheUtils  = require('alien-node-redis-utils')(redisClient);
 
-var loginCtrl  = require('../../controllers/auth/login'),
-    logoutCtrl = require('../../controllers/auth/logout');
+var loginCtrl  = require('../controllers/auth/login'),
+    logoutCtrl = require('../controllers/auth/logout');
 
 router.get('/login', loginCtrl);
 router.get('/logout', logoutCtrl);
@@ -15,21 +19,35 @@ router.get('/logout', logoutCtrl);
 //   request.  The first step in Facebook authentication will involve
 //   redirecting the user to facebook.com.  After authorization, Facebook will
 //   redirect the user back to this application at /auth/facebook/callback
-router.get('/auth/facebook',
-  passport.authenticate('facebook'),
-  function(req, res) {
-    // The request will be redirected to Facebook for authentication, so this
-    // function will not be called.
-  });
+router.get('/facebook',
+  passport.authenticate('facebook', {
+    display : 'touch',
+    scope   : ['email']
+  }), R.T);
 
 // GET /auth/facebook/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {failureRedirect : '/login'}),
+router.get('/facebook/callback',
+  passport.authenticate('facebook', {
+    failureRedirect : '/login',
+    scope           : ['email']
+  }),
   function(req, res) {
-    console.log('user = ', req.user);
-    res.redirect('/');
+
+    var CACHE_KEY = 'auth.redirect:' + R.prop('sessionID', req);
+
+    cacheUtils.getItem(CACHE_KEY)
+      .then(JSON.parse)
+      .then(R.prop('url'))
+      .then(R.defaultTo('/'))
+      .then(function(url) {
+        cacheUtils.deleteItem(CACHE_KEY);
+        res.redirect(url);
+      })
+      .catch(res.redirect.bind(res, '/'));
   });
+
+module.exports = router;

@@ -13,8 +13,7 @@ var DB                 = require('alien-node-mysql-utils')(dbPool),
 
 var decorateDataForDbInsertion = function(playerData) {
   var dataCopy   = R.clone(playerData),
-      getProp    = R.flip(R.prop),
-      playerProp = getProp(dataCopy);
+      playerProp = R.prop(R.__, dataCopy);
 
   if (playerProp('password')) {
     dataCopy.password = passwords.makePasswordHash(playerProp('password'));

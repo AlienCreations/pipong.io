@@ -1,9 +1,11 @@
 'use strict';
 
-var express = require('express'),
-    router  = express.Router();
+var express  = require('express'),
+    passport = require('passport'),
+    router   = express.Router();
 
-var corsAllowedMiddleware = require('../../middleware/corsAllowed');
+var corsAllowedMiddleware         = require('../../middleware/corsAllowed'),
+    ensureAuthenticatedMiddleware = require('../../middleware/ensureAuthenticated');
 
 var createPlayerCtrl     = require('../../controllers/api/player/createPlayer'),
     getPlayerByEmailCtrl = require('../../controllers/api/player/getPlayerByEmail'),
@@ -11,8 +13,10 @@ var createPlayerCtrl     = require('../../controllers/api/player/createPlayer'),
     updatePlayerCtrl     = require('../../controllers/api/player/updatePlayer');
 
 // http://www.pipong.io/api/player
+router.get('/create', ensureAuthenticatedMiddleware, createPlayerCtrl);
+
 router.post('/', corsAllowedMiddleware, createPlayerCtrl);
-router.put('/', corsAllowedMiddleware, updatePlayerCtrl);
+router.put('/',  corsAllowedMiddleware, updatePlayerCtrl);
 
 // http://www.pipong.io/api/player/email/test@test.com
 router.get('/email/:email', corsAllowedMiddleware, getPlayerByEmailCtrl);

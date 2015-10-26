@@ -24,6 +24,11 @@ SET avatar_1          = 'foo.png',
     username          = 'Tester2',
     wins              = 0;
 
+# Player 2 will have a Facebook account
+INSERT INTO facebook_mapping
+SET facebook_id = '12345',
+    player_id   = 2;
+
 # Test location
 INSERT INTO locations
 SET name              = 'Test Location',

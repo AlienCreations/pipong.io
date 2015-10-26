@@ -19,6 +19,14 @@
           templateUrl : '/views/pages/index',
           controller  : 'MainCtrl as mainCtrl'
         }).
+        when('/me', {
+          templateUrl : '/views/pages/player-profile',
+          controller  : 'PlayerProfileCtrl as playerProfileCtrl'
+        }).
+        when('/profile/:playerId', {
+          templateUrl : '/views/pages/player-profile',
+          controller  : 'PlayerProfileCtrl as playerProfileCtrl'
+        }).
         //when('/new-game', {
         //  templateUrl : '/pages/player-select',
         //  controller  : 'PlayerSelectCtrl as playerSelectCtrl'

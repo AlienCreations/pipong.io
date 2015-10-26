@@ -1,6 +1,7 @@
 'use strict';
 
 var R      = require('ramda'),
+    goby   = require('goby').init(),
     moment = require('moment'),
     mysql  = require('mysql'),
     config = require('config'),
@@ -11,10 +12,15 @@ var DB                 = require('alien-node-mysql-utils')(dbPool),
     validatePlayerData = require('../helpers/validatePlayerData').validateForInsert;
 
 var decorateDataForDbInsertion = function(playerData) {
-  var dataCopy = R.clone(playerData);
+  var dataCopy    = R.clone(playerData),
+      getProvided = R.prop(R.__, dataCopy),
+      randomName  = goby.generate(['adj', 'pre', 'suf']),
+      dateString  = moment().format('YYYY-MM-DD'),
+      timeStamp   = parseInt(moment().format('X'));
 
-  dataCopy.createdDate     = dataCopy.createdDate || moment().format('YYYY-MM-DD');
-  dataCopy.createdUnixTime = playerData.createdUnixTime || parseInt(moment().format('X'));
+  dataCopy.username        = R.defaultTo(randomName, getProvided('username'));
+  dataCopy.createdDate     = R.defaultTo(dateString, getProvided('createdDate'));
+  dataCopy.createdUnixTime = R.defaultTo(timeStamp,  getProvided('createdUnixTime'));
 
   return dataCopy;
 };

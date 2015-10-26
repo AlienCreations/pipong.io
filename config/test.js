@@ -19,6 +19,10 @@ module.exports = {
     enabledPorts : [3000]
   },
 
+  session : {
+    secret : 'test'
+  },
+
   logging : {
     winston : {
       transports : [
@@ -76,7 +80,9 @@ module.exports = {
   auth : {
     strategies : {
       facebook : {
-        callbackUrl : 'https://www.pipong.io/auth/facebook/callback'
+        clientId     : '',
+        clientSecret : '',
+        callbackUrl  : ''
       }
     }
   }

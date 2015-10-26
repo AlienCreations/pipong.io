@@ -23,14 +23,17 @@ function getPlayerById(req, res) {
   var CACHE_KEY             = 'api.players.getPlayerById:' + playerId,
       CACHE_EXPIRE_ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
 
+  var privateFields = ['email', 'password'];
+
   return cacheUtils.getItem(CACHE_KEY)
     .then(JSON.parse)
     .then(apiUtils.jsonResponseSuccess(req, res))
     .catch(_getPlayerById.bind(null, parseInt(playerId)))
+    .then(R.omit(privateFields))
     .then(cacheUtils.setItem(CACHE_KEY, CACHE_EXPIRE_ONE_WEEK))
     .then(apiUtils.jsonResponseSuccess(req, res))
     .catch(function(err) {
-      return apiUtils.jsonResponseError(req, res, R.merge(err, { statusCode : 404 }))
+      return apiUtils.jsonResponseError(req, res, R.merge(err, { statusCode : 404 }));
     });
 }
 

@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `players`;
 CREATE TABLE `players` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `avatar_1` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `avatar_2` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -97,6 +97,18 @@ CREATE TABLE `players` (
   UNIQUE KEY `uri` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `facebook_mapping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `facebook_mapping` (
+  `facebook_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `player_id` int(10) unsigned NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `facebook_mapping`
+ADD PRIMARY KEY (`facebook_id`,`player_id`);
 
 --
 -- Table structure for table `tables`

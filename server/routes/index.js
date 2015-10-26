@@ -23,5 +23,8 @@ var indexCtrl = require('../controllers/index');
 //});
 
 router.get('/', indexCtrl);
+router.get('/me', indexCtrl);
+router.get('/profile', indexCtrl);
+router.get('/profile/:playerId', indexCtrl);
 
 module.exports = router;

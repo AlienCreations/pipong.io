@@ -25,7 +25,6 @@ angular.module('pipong').directive('audioLoop', ['$window', 'R',
         var err = function () { console.error('The request failed.'); };
 
         var onDecoded = R.curry(function(source, response) {
-          console.log('there...');
           source.buffer = response;
           source.start(0);
           source.loop = true;
@@ -35,7 +34,6 @@ angular.module('pipong').directive('audioLoop', ['$window', 'R',
         request.open('GET', scope.src, true);
         request.responseType = 'arraybuffer';
         request.onload = function() {
-          console.log('here...');
           context.decodeAudioData(request.response, onDecoded(source), err );
         };
         request.send();

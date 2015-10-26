@@ -30,7 +30,7 @@ function updatePlayer(req, res) {
     .then(JSON.parse)
     .then(apiUtils.jsonResponseSuccess(req, res))
     .catch(function(err) {
-      return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}))
+      return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}));
     });
 }
 

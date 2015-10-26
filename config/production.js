@@ -19,6 +19,10 @@ module.exports = {
     enabledPorts : [3000]
   },
 
+  session : {
+    secret : R.path(['env', 'SESSION_SECRET'], process)
+  },
+
   logging : {
     winston : {
       transports : [
@@ -76,7 +80,9 @@ module.exports = {
   auth : {
     strategies : {
       facebook : {
-        callbackUrl : 'https://www.pipong.io/auth/facebook/callback'
+        clientId     : R.path(['env', 'FACEBOOK_APP_ID'], process),
+        clientSecret : R.path(['env', 'FACEBOOK_APP_SECRET'], process),
+        callbackUrl  : 'https://www.pipong.io/auth/facebook/callback'
       }
     }
   }
