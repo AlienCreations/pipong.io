@@ -19,8 +19,10 @@ var ensureAuthenticated = function(req, res, next) {
       cacheVal                = R.createMapEntry('url', R.prop('originalUrl', req));
 
   if (req.isAuthenticated()) {
+    console.log('... is authenticated.');
     return next();
   } else {
+    console.log('.. not authenticated.')
     cacheUtils.setItem(CACHE_KEY, CACHE_EXPIRE_ONE_MINUTE, cacheVal)
       .then(function() {
         res.redirect('/auth/facebook');

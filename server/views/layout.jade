@@ -8,6 +8,7 @@ html
     link(rel="stylesheet", href="/assets/css/index.css")
     script(type="text/javascript", src="/assets/js/vendor.js")
     script(type="text/javascript", src="/assets/js/main.js")
+    include partials/persist-user-to-localstorage
   body(ng-app="pipong", id="ng-app", ng-controller="RootCtrl as rootCtrl")
     //audio-loop(src="/assets/audio/theme.wav")
     div(ng-view)

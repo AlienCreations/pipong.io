@@ -3,49 +3,49 @@
 var R        = require('ramda'),
     prr      = require('prettycats'),
     V        = require('o-validator'),
-    validate = require('../../../utils/validatePayload')('tableData');
+    validate = require('../../../utils/validatePayload')('locationData');
 
-var FORMATTED_DATE_PATTERN = /[0-9]{4}-[0-9]{2}-[0-9]{2}/,
-    MD5_LENGTH             = 32,
-    SHORT_CODE_LENGTH      = 6;
+var FORMATTED_DATE_PATTERN = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
 
 var validateForInsert = validate({
+  name            : V.required(prr.isStringOfLengthAtMost(100)),
+  uri             : prr.isStringOfLengthAtMost(255),
+  createdDate     : prr.isStringMatching(FORMATTED_DATE_PATTERN),
+  createdUnixTime : prr.isPositiveNumber
+});
+
+var validateForInsertManager = validate({
+  playerId        : V.required(prr.isPositiveNumber),
   locationId      : V.required(prr.isPositiveNumber),
-  code            : prr.isStringOfLength(MD5_LENGTH),
-  shortCode       : prr.isStringOfLength(SHORT_CODE_LENGTH),
   createdDate     : prr.isStringMatching(FORMATTED_DATE_PATTERN),
   createdUnixTime : prr.isPositiveNumber
 });
 
 var validateForUpdate = validate({
   id              : V.required(prr.isPositiveNumber),
-  locationId      : prr.isPositiveNumber,
-  code            : prr.isStringOfLength(MD5_LENGTH),
-  shortCode       : prr.isStringOfLength(SHORT_CODE_LENGTH),
+  name            : prr.isStringOfLengthAtMost(100),
+  uri             : prr.isStringOfLengthAtMost(255),
   createdDate     : prr.isStringMatching(FORMATTED_DATE_PATTERN),
   createdUnixTime : prr.isPositiveNumber
 });
 
-var validateForPlayerMapping = validate({
-  playerId        : V.required(prr.isPositiveNumber),
-  tableId         : V.required(prr.isPositiveNumber),
-  status          : V.required(prr.isNumber),
-  createdDate     : prr.isStringMatching(FORMATTED_DATE_PATTERN),
-  createdUnixTime : prr.isPositiveNumber
+var validateForDelete = validate({
+  id : V.required(prr.isPositiveNumber)
 });
 
 var validateForGetById = validate({
   id : V.required(prr.isPositiveNumber)
 });
 
-var validateForGetByLocationId = validate({
-  locationId : V.required(prr.isPositiveNumber)
+var validateForGetByUri = validate({
+  uri : V.required(prr.isStringOfLengthAtMost(255))
 });
 
 module.exports = {
-  validateForInsert          : validateForInsert,
-  validateForUpdate          : validateForUpdate,
-  validateForPlayerMapping   : validateForPlayerMapping,
-  validateForGetById         : validateForGetById,
-  validateForGetByLocationId : validateForGetByLocationId
+  validateForInsert        : validateForInsert,
+  validateForInsertManager : validateForInsertManager,
+  validateForUpdate        : validateForUpdate,
+  validateForDelete        : validateForDelete,
+  validateForGetById       : validateForGetById,
+  validateForGetByUri      : validateForGetByUri
 };

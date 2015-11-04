@@ -23,7 +23,7 @@ var validateForInsert = validate({
 
 var validateForUpdate = validate({
   id       : V.required(prr.isPositiveNumber),
-  email    : V.required(prr.isEmail),
+  email    : prr.isEmail,
   name     : prr.isStringOfLengthAtMost(30),
   username : prr.isStringOfLengthAtMost(60),
   password : prr.isStringOfLengthAtMost(60),
@@ -38,8 +38,13 @@ var validateForFacebookMapping = validate({
   facebookId : V.required(prr.isString)
 });
 
-var validateForGetByTableCode = validate({
-  tableCode : V.required(prr.isStringOfLength(MD5_LENGTH))
+var validateForCheckIsLocationManager = validate({
+  playerId   : V.required(prr.isPositiveNumber),
+  locationId : V.required(prr.isPositiveNumber)
+});
+
+var validateForGetByTableShortCode = validate({
+  tableShortCode : V.required(prr.isStringOfLength(6))
 });
 
 var validateForGetById = validate({
@@ -55,11 +60,12 @@ var validateForGetByFacebookId = validate({
 });
 
 module.exports = {
-  validateForInsert          : validateForInsert,
-  validateForUpdate          : validateForUpdate,
-  validateForFacebookMapping : validateForFacebookMapping,
-  validateForGetByTableCode    : validateForGetByTableCode,
-  validateForGetById         : validateForGetById,
-  validateForGetByEmail      : validateForGetByEmail,
-  validateForGetByFacebookId : validateForGetByFacebookId
+  validateForInsert                 : validateForInsert,
+  validateForUpdate                 : validateForUpdate,
+  validateForFacebookMapping        : validateForFacebookMapping,
+  validateForCheckIsLocationManager : validateForCheckIsLocationManager,
+  validateForGetByTableShortCode    : validateForGetByTableShortCode,
+  validateForGetById                : validateForGetById,
+  validateForGetByEmail             : validateForGetByEmail,
+  validateForGetByFacebookId        : validateForGetByFacebookId
 };

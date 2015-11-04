@@ -4,9 +4,9 @@ var R       = require('ramda'),
     config  = require('config'),
     execsql = require('execsql');
 
-var dbConfig = R.prop('mysql', config),
+var dbConfig     = R.prop('mysql', config),
     useSpecDbSql = 'USE `pipong-test`;',
-    sqlFiles = {
+    sqlFiles     = {
       resetTables  : __dirname + '/../../sql/resetTables.sql',
       seedSpecDb   : __dirname + '/../../sql/seedSpecDb.sql'
     };
@@ -18,6 +18,8 @@ beforeAll(function() {
 });
 
 beforeEach(function(done) {
+
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
 
     mysql.exec(useSpecDbSql, function(err, results) {
       mysql.execFile(sqlFiles.resetTables, function(err, results) {

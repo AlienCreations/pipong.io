@@ -48,6 +48,7 @@ var createAndExecuteQuery = function(playerData) {
  * @returns {Promise}
  */
 function updatePlayer(playerData) {
+  playerData = R.defaultTo({}, playerData);
   validatePlayerData(playerData);
   return createAndExecuteQuery(playerData);
 }

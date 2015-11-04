@@ -1,7 +1,7 @@
 'use strict';
 
-var R           = require('ramda'),
-    apiUtils    = require('alien-node-api-utils'),
+var R        = require('ramda'),
+    apiUtils = require('alien-node-api-utils'),
 
     // TODO this--
     logUtils = require('alien-node-winston-utils');
@@ -17,11 +17,15 @@ function createPlayer(req, res) {
 
   var playerData = R.path(['user'], req);
 
-  return _createPlayer(playerData)
-    .then(apiUtils.jsonResponseSuccess(req, res))
-    .catch(function(err) {
-      return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}));
-    });
+  try {
+    return _createPlayer(playerData)
+      .then(apiUtils.jsonResponseSuccess(req, res))
+      .catch(function(err) {
+        return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}));
+      });
+  } catch (err) {
+    return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 500}));
+  }
 }
 
 module.exports = createPlayer;

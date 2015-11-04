@@ -1,11 +1,12 @@
 'use strict';
 
 module.exports = {
-  createPlayer             : require('./methods/createPlayer'),
-  updatePlayer             : require('./methods/updatePlayer'),
-  getPlayerByEmail         : require('./methods/getPlayerByEmail'),
-  getPlayerByFacebookId    : require('./methods/getPlayerByFacebookId'),
-  getPlayerById            : require('./methods/getPlayerById'),
-  mapFacebookId            : require('./methods/mapFacebookId'),
-  transformFacebookProfile : require('./methods/transformFacebookProfile')
+  createPlayer               : require('./methods/createPlayer'),
+  getPlayerByEmail           : require('./methods/getPlayerByEmail'),
+  getPlayerByFacebookId      : require('./methods/getPlayerByFacebookId'),
+  getPlayerById              : require('./methods/getPlayerById'),
+  getPlayersByTableShortCode : require('./methods/getPlayersByTableShortCode'),
+  mapFacebookId              : require('./methods/mapFacebookId'),
+  transformFacebookProfile   : require('./methods/transformFacebookProfile'),
+  updatePlayer               : require('./methods/updatePlayer')
 };

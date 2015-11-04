@@ -26,11 +26,11 @@ var makeFakePlayerData = function(includeOptional) {
   var fakeRequiredPlayerData = {
     name     : FAKE_NAME,
     username : FAKE_USERNAME,
-    email    : FAKE_EMAIL,
-    password : FAKE_PASSWORD
+    email    : FAKE_EMAIL
   };
 
   var fakeOptionalPlayerData = {
+    password        : FAKE_PASSWORD,
     avatar1         : FAKE_AVATAR_1,
     avatar2         : FAKE_AVATAR_2,
     wins            : FAKE_WINS,

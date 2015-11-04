@@ -17,11 +17,15 @@ function createLocation(req, res) {
 
   var locationData = R.path(['body'], req);
 
-  return _createLocation.bind(null, locationData)
-    .then(apiUtils.jsonResponseSuccess(req, res))
-    .catch(function(err) {
-      return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}));
-    });
+  try {
+    return _createLocation.bind(null, locationData)
+      .then(apiUtils.jsonResponseSuccess(req, res))
+      .catch(function(err) {
+        return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 400}));
+      });
+  } catch (err) {
+    return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 500}));
+  }
 }
 
 module.exports = createLocation;

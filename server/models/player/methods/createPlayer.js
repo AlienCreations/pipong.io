@@ -18,6 +18,10 @@ var decorateDataForDbInsertion = function(playerData) {
       dateString  = moment().format('YYYY-MM-DD'),
       timeStamp   = parseInt(moment().format('X'));
 
+  if (getProvided('password')) {
+    dataCopy.password = passwords.makePasswordHash(getProvided('password'));
+  }
+
   dataCopy.username        = R.defaultTo(randomName, getProvided('username'));
   dataCopy.createdDate     = R.defaultTo(dateString, getProvided('createdDate'));
   dataCopy.createdUnixTime = R.defaultTo(timeStamp,  getProvided('createdUnixTime'));

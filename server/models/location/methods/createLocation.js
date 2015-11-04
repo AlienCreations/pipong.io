@@ -6,37 +6,34 @@ var R      = require('ramda'),
     config = require('config'),
     dbPool = mysql.createPool(config.mysql);
 
-var DB                = require('alien-node-mysql-utils')(dbPool),
-    validateTableData = require('../helpers/validateTableData').validateForInsert;
+var DB                   = require('alien-node-mysql-utils')(dbPool),
+    validateLocationData = require('../helpers/validateLocationData').validateForInsert;
 
-var STATUS_ACTIVE = 1;
-
-var decorateDataForDbInsertion = function(tableData) {
-  var dataCopy    = R.clone(tableData),
+var decorateDataForDbInsertion = function(locationData) {
+  var dataCopy    = R.clone(locationData),
       getProvided = R.prop(R.__, dataCopy),
       dateString  = moment().format('YYYY-MM-DD'),
       timeStamp   = parseInt(moment().format('X'));
 
-  dataCopy.status          = R.defaultTo(STATUS_ACTIVE, getProvided('status'));
-  dataCopy.createdDate     = R.defaultTo(dateString,    getProvided('createdDate'));
-  dataCopy.createdUnixTime = R.defaultTo(timeStamp,     getProvided('createdUnixTime'));
+  dataCopy.createdDate     = R.defaultTo(dateString, getProvided('createdDate'));
+  dataCopy.createdUnixTime = R.defaultTo(timeStamp,  getProvided('createdUnixTime'));
 
   return dataCopy;
 };
 
-var createAndExecuteQuery = function(tableData) {
-  tableData = decorateDataForDbInsertion(tableData);
+var createAndExecuteQuery = function(locationData) {
+  locationData = decorateDataForDbInsertion(locationData);
 
-  var fields = R.keys(tableData);
-  var query  = 'INSERT INTO tables SET ' +
-               DB.prepareProvidedFieldsForSet(fields);
-  var queryStatement = [query, DB.prepareValues(tableData)];
+  var fields         = R.keys(locationData);
+  var query          = 'INSERT INTO locations SET ' +
+                       DB.prepareProvidedFieldsForSet(fields);
+  var queryStatement = [query, DB.prepareValues(locationData)];
   return DB.query(queryStatement);
 };
 
-function createTable(tableData) {
-  validateTableData(tableData);
-  return createAndExecuteQuery(tableData);
+function createLocation(locationData) {
+  validateLocationData(locationData);
+  return createAndExecuteQuery(locationData);
 }
 
-module.exports = createTable;
+module.exports = createLocation;

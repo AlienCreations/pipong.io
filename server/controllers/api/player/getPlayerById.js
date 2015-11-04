@@ -25,16 +25,20 @@ function getPlayerById(req, res) {
 
   var privateFields = ['email', 'password'];
 
-  return cacheUtils.getItem(CACHE_KEY)
-    .then(JSON.parse)
-    .then(apiUtils.jsonResponseSuccess(req, res))
-    .catch(_getPlayerById.bind(null, parseInt(playerId)))
-    .then(R.omit(privateFields))
-    .then(cacheUtils.setItem(CACHE_KEY, CACHE_EXPIRE_ONE_WEEK))
-    .then(apiUtils.jsonResponseSuccess(req, res))
-    .catch(function(err) {
-      return apiUtils.jsonResponseError(req, res, R.merge(err, { statusCode : 404 }));
-    });
+  try {
+    return cacheUtils.getItem(CACHE_KEY)
+      .then(JSON.parse)
+      .then(apiUtils.jsonResponseSuccess(req, res))
+      .catch(_getPlayerById.bind(null, parseInt(playerId, 10)))
+      .then(R.omit(privateFields))
+      .then(cacheUtils.setItem(CACHE_KEY, CACHE_EXPIRE_ONE_WEEK))
+      .then(apiUtils.jsonResponseSuccess(req, res))
+      .catch(function(err) {
+        return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 404}));
+      });
+  } catch (err) {
+    return apiUtils.jsonResponseError(req, res, R.merge(err, {statusCode : 500}));
+  }
 }
 
 module.exports = getPlayerById;
