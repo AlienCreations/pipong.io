@@ -41,14 +41,17 @@ module.exports = {
   },
 
   mysql : {
-    connectionLimit : 10,
-    host            : 'localhost',
-    user            : R.path(['env', 'MYSQL_USER'], process),
-    password        : R.path(['env', 'MYSQL_PASSWORD'], process),
-    database        : R.path(['env', 'MYSQL_DATABASE'], process)
+    pipongDb : {
+      connectionLimit : 10,
+      host            : 'localhost',
+      user            : R.path(['env', 'MYSQL_USER'], process),
+      password        : R.path(['env', 'MYSQL_PASSWORD'], process),
+      database        : R.path(['env', 'MYSQL_DATABASE'], process)
+    }
   },
 
   redis : {
+    client   : 'redis',
     host     : 'localhost',
     port     : 6379,
     password : ''

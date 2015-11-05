@@ -4,7 +4,7 @@ var R      = require('ramda'),
     moment = require('moment'),
     mysql  = require('mysql'),
     config = require('config'),
-    dbPool = mysql.createPool(config.mysql);
+    dbPool = mysql.createPool(R.path(['mysql', 'pipongDb'], config));
 
 var DB                 = require('alien-node-mysql-utils')(dbPool),
     validatePlayerData = require('../helpers/validatePlayerData').validateForFacebookMapping;

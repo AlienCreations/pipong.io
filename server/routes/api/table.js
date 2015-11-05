@@ -6,9 +6,9 @@ var express  = require('express'),
 
 var allowCors = require('../../middleware/allowCors');
 
-var getPlayersByTableCode = require('../../controllers/api/player/getPlayersByTableCode');
+var getPlayersByTableShortCode = require('../../controllers/api/player/getPlayersByTableShortCode');
 
-// http://www.pipong.io/api/v1/table/players/code/7daf44e9238cbd7bad15b672f559d5d6
-router.get('/players/code/:code', allowCors, getPlayersByTableCode);
+// http://www.pipong.io/api/v1/table/players/code/17daf4
+router.get('/players/code/:code', allowCors, getPlayersByTableShortCode);
 
 module.exports = router;

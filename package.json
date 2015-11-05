@@ -60,7 +60,8 @@
     "gulp-ng-html2js": "*",
     "gulp-nodemon": "*",
     "gulp-shell": "*",
-    "gulp-uglify": "*"
+    "gulp-uglify": "*",
+    "redis-mock": "^0.5.0"
   },
   "scripts": {
     "test": "export NODE_ENV=test && ./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine"

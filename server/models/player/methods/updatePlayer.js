@@ -5,7 +5,7 @@ var R         = require('ramda'),
     config    = require('config'),
     prr       = require('prettycats'),
     Validator = require('o-validator'),
-    dbPool    = mysql.createPool(config.mysql);
+    dbPool    = mysql.createPool(R.path(['mysql', 'pipongDb'], config));
 
 var DB                 = require('alien-node-mysql-utils')(dbPool),
     passwords          = require('../../../utils/passwords'),

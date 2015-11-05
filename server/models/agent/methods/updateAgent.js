@@ -6,7 +6,7 @@ var R         = require('ramda'),
     moment    = require('moment'),
     prr       = require('prettycats'),
     Validator = require('o-validator'),
-    dbPool    = mysql.createPool(R.prop('mysql', config));
+    dbPool    = mysql.createPool(R.path(['mysql', 'pipongDb'], config));
 
 var DB                = require('alien-node-mysql-utils')(dbPool),
     validateAgentData = require('../helpers/validateAgentData').validateForUpdate;

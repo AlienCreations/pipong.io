@@ -41,14 +41,17 @@ module.exports = {
   },
 
   mysql : {
-    connectionLimit : 10,
-    host            : 'localhost',
-    user            : 'root',
-    password        : 'root',
-    database        : 'pipong-test'
+    pipongDb : {
+      connectionLimit : 10,
+      host            : 'localhost',
+      user            : 'root',
+      password        : 'root',
+      database        : 'pipong-test'
+    }
   },
 
   redis : {
+    client   : 'redis-mock',
     host     : 'localhost',
     port     : 6379,
     password : ''

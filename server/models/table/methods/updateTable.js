@@ -4,8 +4,7 @@ var R         = require('ramda'),
     mysql     = require('mysql'),
     config    = require('config'),
     prr       = require('prettycats'),
-    Validator = require('o-validator'),
-    dbPool    = mysql.createPool(config.mysql);
+    dbPool    = mysql.createPool(R.path(['mysql', 'pipongDb'], config));
 
 var DB                = require('alien-node-mysql-utils')(dbPool),
     validateTableData = require('../helpers/validateTableData').validateForUpdate;

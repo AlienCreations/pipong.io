@@ -15,8 +15,6 @@ describe('deleteLocation', function() {
     deleteLocation(KNOWN_TEST_LOCATION_ID).then(function(data) {
       expect(data.affectedRows).toBe(1);
       done();
-    }).catch(function(err) {
-      console.log('err = ', err);
     });
   });
 
