@@ -21,5 +21,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn install
+      - run: npm install -g moment
       - run: node ./node_modules/codefreeze/index
