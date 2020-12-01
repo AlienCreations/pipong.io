@@ -14,9 +14,9 @@
     "alien-node-redis-utils": "^1.x.x",
     "alien-node-winston-utils": "^0.0.x",
     "atob": "^1.1.2",
-    "bcrypt": "^0.8.2",
-    "btoa": "^1.1.2",
+    "bcrypt": "^5.0.0",
     "bower": "^1.4.1",
+    "btoa": "^1.1.2",
     "config": "^1.8.1",
     "del": "^1.1.1",
     "execsql": "0.0.3",
@@ -48,9 +48,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "istanbul": "^0.3.13",
-    "jasmine": "^2.3.1",
-    "jshint-stylish": "^0.2.0",
+    "dupertest": "seancannon/dupertest",
     "gulp": "^3.8.11",
     "gulp-concat": "*",
     "gulp-if": "*",
@@ -61,6 +59,9 @@
     "gulp-nodemon": "*",
     "gulp-shell": "*",
     "gulp-uglify": "*",
+    "istanbul": "^0.3.13",
+    "jasmine": "^2.3.1",
+    "jshint-stylish": "^0.2.0",
     "redis-mock": "^0.5.0"
   },
   "scripts": {

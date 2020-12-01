@@ -1,8 +1,6 @@
 (function (angular, R) {
   'use strict';
 
-  'use strict';
-
   /**
    * @ngdoc function
    * @author seancannon
