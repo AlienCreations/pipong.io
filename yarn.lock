@@ -931,6 +931,13 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
+codefreeze@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/codefreeze/-/codefreeze-1.0.0.tgz#4c050689927ebb1b432610f511cc3bb359db505c"
+  integrity sha512-OY7agqEoGfGTjrS2Ldxz/JYLNs01DTM+LAyWVtiSrJ6eTgSbfw9G/jwmkimqhBfIDGqphmBrmOX7h8sWeBqwDg==
+  dependencies:
+    moment "^2.29.1"
+
 collection-map@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/collection-map/-/collection-map-1.0.0.tgz#aea0f06f8d26c780c2b75494385544b2255af18c"
@@ -3898,7 +3905,7 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.3, mkdirp@~0.5.0:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.10.3, moment@^2.10.x:
+moment@^2.10.3, moment@^2.10.x, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
