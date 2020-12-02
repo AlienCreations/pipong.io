@@ -931,12 +931,12 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codefreeze@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/codefreeze/-/codefreeze-1.0.4.tgz#0eba29fa0db3090ef48a97532adea3bd226156d8"
-  integrity sha512-4dpPOl7DrCwfJeQst4yfXCzKm5by+SNJNY5cz5U8QWR5ZICH6gp0C59uFX857LqxiwDK4KgRZpVwhbkaP6h3FQ==
+codefreeze@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/codefreeze/-/codefreeze-1.0.5.tgz#7b961f9bb6366871a8fa3f652a54144cdb791398"
+  integrity sha512-v8POJCVM9zx0dVoPP5KlVmbaahcCneOiFLLt3QNEexcEO80+2X3wYx0J6Hyl2097tVcpOA6pc0chH21Lij6u2g==
   dependencies:
-    moment "^2.29.1"
+    moment-timezone "^0.5.32"
 
 collection-map@^1.0.0:
   version "1.0.0"
@@ -3905,7 +3905,14 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.3, mkdirp@~0.5.0:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.10.3, moment@^2.10.x, moment@^2.29.1:
+moment-timezone@^0.5.32:
+  version "0.5.32"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.32.tgz#db7677cc3cc680fd30303ebd90b0da1ca0dfecc2"
+  integrity sha512-Z8QNyuQHQAmWucp8Knmgei8YNo28aLjJq6Ma+jy1ZSpSk5nyfRT8xgUbSQvD2+2UajISfenndwvFuH3NGS+nvA==
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0", moment@^2.10.3, moment@^2.10.x:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
