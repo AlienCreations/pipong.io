@@ -931,10 +931,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codefreeze@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/codefreeze/-/codefreeze-1.0.2.tgz#8abd4658c7d206b36ae65be33c2343b7d0c7a6a8"
-  integrity sha512-lLVxwWhwQ9mqIP3WXxH9u8da4h0Xw36LExMz0l1AuisVURO5IqFjHZ469IYg3raqqzau4aOdFWkgazbOc6FdFQ==
+codefreeze@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/codefreeze/-/codefreeze-1.0.4.tgz#0eba29fa0db3090ef48a97532adea3bd226156d8"
+  integrity sha512-4dpPOl7DrCwfJeQst4yfXCzKm5by+SNJNY5cz5U8QWR5ZICH6gp0C59uFX857LqxiwDK4KgRZpVwhbkaP6h3FQ==
   dependencies:
     moment "^2.29.1"
 

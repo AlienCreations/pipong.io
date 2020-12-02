@@ -17,7 +17,7 @@
     "bcrypt": "^5.0.0",
     "bower": "^1.4.1",
     "btoa": "^1.1.2",
-    "codefreeze": "1.0.2",
+    "codefreeze": "1.0.4",
     "config": "^1.8.1",
     "del": "^1.1.1",
     "execsql": "0.0.3",
