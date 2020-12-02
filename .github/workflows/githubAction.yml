@@ -22,4 +22,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g moment codefreeze@1.0.0 && npm list -g
+      - run: for v in `cat GITHUB_ENV` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
       - run: node /opt/hostedtoolcache/node/12.18.4/x64/lib/node_modules/codefreeze/index
