@@ -22,5 +22,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g moment codefreeze@1.0.0 && npm list -g
-      - run: for v in `cat GITHUB_ENV` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
-      - run: node /opt/hostedtoolcache/node/12.18.4/x64/lib/node_modules/codefreeze/index
+      - run: |
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_DAY_BEGIN= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_DAY_BEGIN
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_HOUR_BEGIN= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_HOUR_BEGIN
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_DAY_END= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_DAY_END
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_HOUR_END= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_HOUR_END
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_BI_WEEKLY= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_BI_WEEKLY
+          cat $(cat GITHUB_ENV) | grep CODE_FREEZE_OVERRIDE= | head -n 1 | grep -o '".*"' | sed 's/"//g' > CODE_FREEZE_OVERRIDE
+          node /opt/hostedtoolcache/node/12.18.4/x64/lib/node_modules/codefreeze/index
